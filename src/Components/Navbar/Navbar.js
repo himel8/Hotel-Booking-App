@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const navLink = [
     { name: "Host your home", link: "/" },
-    { name: "Host your experience", link: "/" },
-    { name: "Help", link: "/" },
-    { name: "Log in", link: "/" },
+    { name: "Host your experience", link: "/experience" },
+    { name: "Help", link: "/help" },
+    { name: "Log in", link: "/login" },
   ];
   //   state declear
   const [open, setOpen] = useState(false);
@@ -15,14 +16,16 @@ const Navbar = () => {
         className="
       md:flex items-center justify-between bg-white py-4 md:px-10 px-7"
       >
-        <div className=" font-bold text-3xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
-          <span className="text-3xl mr-2 pt-2 text-emerald-400 ">
-            <ion-icon name="bed-outline"></ion-icon>
-          </span>
-          <span className="bg-gradient-to-r text-transparent bg-clip-text from-emerald-500 to-lime-500 ">
-            Aircnc
-          </span>
-        </div>
+        <Link to="/">
+          <div className=" font-bold text-3xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
+            <span className="text-3xl mr-2 pt-2 text-emerald-400 ">
+              <ion-icon name="bed-outline"></ion-icon>
+            </span>
+            <span className="bg-gradient-to-r text-transparent bg-clip-text from-emerald-500 to-lime-500 ">
+              Aircnc
+            </span>
+          </div>
+        </Link>
         <div className="text-3xl absolute right-8 top-3 cursor-pointer md:hidden">
           <ion-icon
             onClick={() => setOpen(!open)}
@@ -41,17 +44,19 @@ const Navbar = () => {
               key={link.name}
               className="md:ml-8 text-lg font-semibold md:my-0 my-7"
             >
-              <a
-                href={link.link}
+              <Link
+                to={link.link}
                 className="text-gray-800 hover:text-gray-400 duration-500"
               >
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
-          <button className="bg-gradient-to-r from-emerald-500 to-lime-500 text-lg text-white font-semibold py-2 px-6 rounded-full md:ml-8 hover:opacity-90 duration-500">
-            Sign up
-          </button>
+          <Link to="signup">
+            <button className="bg-gradient-to-r from-emerald-500 to-lime-500 text-lg text-white font-semibold py-2 px-6 rounded-full md:ml-8 hover:opacity-90 duration-500">
+              Sign up
+            </button>
+          </Link>
         </ul>
       </div>
     </div>
